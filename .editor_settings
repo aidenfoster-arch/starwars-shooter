@@ -1,0 +1,139 @@
+{
+  :bundle {
+    :last-bundle-command :project.bundle-windows
+    :output-directory "\\\\curric14109\\users$\\Students\\Intake2025\\aidenfoster\\Documents\\game sharing\\x86_64-win32"
+    :windows {
+      :build_report false
+      :contentless false
+      :liveupdate false
+      :platform "x86_64-win32"
+      :texture_compression "enabled"
+      :variant "debug"
+      :with_symbols true
+    }
+  }
+  :workflow {
+    :recent-files [
+      [
+        "/README.md"
+        :html
+      ]
+      [
+        "/builtins/input/all.input_binding"
+        :cljfx-form-view
+      ]
+      [
+        "/builtins/input/default.gamepads"
+        :cljfx-form-view
+      ]
+      [
+        "/builtins/materials/gui.fp"
+        :code
+      ]
+      [
+        "/builtins/materials/gui.material"
+        :cljfx-form-view
+      ]
+      [
+        "/builtins/materials/gui_paged_atlas.fp"
+        :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/.gitignore"
+        :code
+      ]
+      [
+        "/builtins/scripts/socket.lua"
+        :code
+      ]
+      [
+        "/main/atlas.atlas"
+        :scene
+      ]
+      [
+        "/main/explosion.particlefx"
+        :scene
+      ]
+      [
+        "/Thumbs.db"
+        :code
+      ]
+      [
+        "/main/invader_copy.go"
+        :scene
+      ]
+      [
+        "/graphics/alien/Thumbs.db"
+        :code
+      ]
+      [
+        "/main/swarm.script"
+        :code
+      ]
+      [
+        "/main/graphics.atlas"
+        :scene
+      ]
+      [
+        "/main/bullet.go"
+        :scene
+      ]
+      [
+        "/.gitattributes"
+        :code
+      ]
+      [
+        "/main/player.go"
+        :scene
+      ]
+      [
+        "/main/bullet.script"
+        :code
+      ]
+      [
+        "/main/player1.script"
+        :code
+      ]
+      [
+        "/input/game.input_binding"
+        :cljfx-form-view
+      ]
+      [
+        "/main/player retry.script"
+        :code
+      ]
+      [
+        "/main/missile.script"
+        :code
+      ]
+      [
+        "/main/missile retry.script"
+        :code
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/invader.script"
+        :code
+      ]
+      [
+        "/main/invader retry.script"
+        :code
+      ]
+      [
+        "/main/invader.go"
+        :scene
+      ]
+      [
+        "/project.shared_editor_settings"
+        :cljfx-form-view
+      ]
+    ]
+  }
+}

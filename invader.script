@@ -1,0 +1,81 @@
+go.property("fire_rate", 1.0) -- bullets per second
+
+function init(self)
+	self.fire_rate = 0.8          -- average shots per second
+	self.timer = math.random() * 2  -- random start delay
+end
+
+local function shoot_at_player(self)
+	local enemy_pos = go.get_position()
+	local player_pos = go.get_position("main:/player1") -- change path if needed
+
+	local dir = player_pos - enemy_pos
+	dir.z = 0
+
+	-- prevent divide-by-zero if enemy is exactly on player
+	if vmath.length(dir) < 0.001 then
+		return
+	end
+
+	dir = vmath.normalize(dir)
+
+	-- Spawn bullet slightly in front of enemy
+	local spawn_pos = enemy_pos + dir * 20
+
+	local bullet_id = factory.create("#bullet_factory", spawn_pos)
+
+	-- Give bullet its direction
+	msg.post(bullet_id, "set_dir", { dir = dir })
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	self.timer = self.timer + dt
+
+	-- shoot every (1 / fire_rate) seconds
+	if self.timer >= (1 / self.fire_rate) then
+		self.timer = 0
+		print("ENEMY SHOOT")
+		if math.random() < 0.01 then
+		shoot_at_player(self)
+	end
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") then
+		msg.post("/swarm", "hit", { object_id = go.get_id() })
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+	end 
+end

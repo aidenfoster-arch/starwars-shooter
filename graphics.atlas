@@ -1,0 +1,59 @@
+animations {
+  id: "alien"
+  images {
+    image: "/graphics/alien/TIE_Fighter_Game_Token.jpg"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+animations {
+  id: "missile"
+  images {
+    image: "/graphics/missile/missile1.png"
+  }
+  images {
+    image: "/graphics/missile/missile2.png"
+  }
+  images {
+    image: "/graphics/missile/missile3.png"
+  }
+  images {
+    image: "/graphics/missile/missile4.png"
+  }
+  images {
+    image: "/graphics/missile/missile5.png"
+  }
+  images {
+    image: "/graphics/missile/missile6.png"
+  }
+  images {
+    image: "/graphics/missile/missile7.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+}
+animations {
+  id: "bank_left"
+  images {
+    image: "/graphics/ship/player new new.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+animations {
+  id: "forward"
+  images {
+    image: "/graphics/ship/player new new.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+animations {
+  id: "bank_right"
+  images {
+    image: "/graphics/ship/player new new.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+extrude_borders: 2

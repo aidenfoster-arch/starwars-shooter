@@ -1,0 +1,95 @@
+function new_swarm(self)
+	-- spawn invaders
+	self.swarm_table = {}
+	self.speed = 100
+	self.direction = 1
+	local pos
+	local invader_id
+
+	-- set position of the invader on the scren
+	for y = 500,290,-70 do
+		for x = 100,550,75 do
+			pos = vmath.vector3(x,y,0)
+			invader_id = factory.create("#alien_factory", pos)
+
+			-- hold refrence to invader
+			table.insert(self.swarm_table,invader_id)
+		end
+	end
+end
+
+function init(self)
+	new_swarm(self)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- move invaders left and right
+	local move_down = false
+	for key,invader in ipairs(self.swarm_table) do
+		local pos = go.get_position(invader)
+		pos.x = (pos.x + self.direction * self.speed * dt)
+		go.set_position(pos, invader)
+
+		-- should invaders move down?
+		if pos.x >890 or pos.x < 60 then
+			move_down = true
+		end
+	end
+
+	-- move all invaders down if one had hit the edge of the screen
+	if move_down == true then
+		self.direction =-self.direction
+		for key,invader in ipairs(self.swarm_table) do
+			local pos = go.get_position(invader)
+			pos.y = pos.y - 20
+			go.set_position(pos, invader)
+		end
+	end
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("hit") then
+		local alien_hit = message.object_id
+		for key,invader in ipairs(self.swarm_table) do
+			if alien_hit == invader then
+				particlefx.play(invader)
+				table.remove(self.swarm_table,key)
+				go.delete(alien_hit)
+				self.speed = self.speed + 10
+			end
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
